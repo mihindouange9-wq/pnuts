@@ -2,6 +2,7 @@
 // puis encodage MP4 H.264 + AAC par WebCodecs (video/encodeur.html). Tout est servi depuis la racine du projet.
 // node tools/video-render.mjs --apercu   → video/apercu.jpg (planche-contact)
 // node tools/video-render.mjs            → livrables/PNUTS-film-36s-1080p.mp4 et -720p.mp4 (+ affiche)
+// node tools/video-render.mjs --fr       → version française (video/scene-fr.html) : PNUTS-film-36s-FR-*.mp4
 // Options : --ips 30  --debit 10000  --debit-mobile 4500  --sans-mobile  --reprendre
 import http from "node:http";
 import { spawn } from "node:child_process";
@@ -15,6 +16,7 @@ const VIDEO = join(RACINE, "video");
 const args = process.argv.slice(2);
 const option = (nom, defaut) => { const i = args.indexOf("--" + nom); return i >= 0 ? Number(args[i + 1]) : defaut; };
 const APERCU = args.includes("--apercu");
+const FR = args.includes("--fr"); // version française : video/scene-fr.html, livrables suffixés -FR
 const REPRENDRE = args.includes("--reprendre");
 const IPS = option("ips", 30);
 const DEBIT = option("debit", 10000) * 1000;
@@ -56,7 +58,7 @@ async function ouvrirChrome(taille) {
 /* ---------- 1. capture ---------- */
 const scene = await ouvrirChrome(`${L},${H}`);
 await scene.envoyer("Emulation.setDeviceMetricsOverride", { width: L, height: H, deviceScaleFactor: 1, mobile: false });
-await scene.envoyer("Page.navigate", { url: `${BASE}/video/scene.html` });
+await scene.envoyer("Page.navigate", { url: `${BASE}/video/scene${FR ? "-fr" : ""}.html` });
 for (let i = 0; i < 120; i++) { if (await scene.evaluer("window.pret === true")) break; await attendre(250); }
 if (!(await scene.evaluer("window.pret === true"))) { console.error("scène non prête", scene.erreurs); process.exit(1); }
 await attendre(800);
@@ -80,7 +82,7 @@ if (APERCU) {
     for (let i = 0; i < vignettes.length; i++) { const img = new Image(); img.src = 'data:image/jpeg;base64,' + vignettes[i].data; await img.decode(); const x = (i % cols) * vw, y = Math.floor(i / cols) * vh; g.drawImage(img, x + 2, y + 2, vw - 4, vh - 4); g.fillStyle = 'rgba(0,0,0,.55)'; g.fillRect(x + 2, y + 2, 70, 26); g.fillStyle = '#fff'; g.font = '600 15px sans-serif'; g.fillText(vignettes[i].t.toFixed(1) + ' s', x + 10, y + 21); }
     return c.toDataURL('image/jpeg', 0.86).split(',')[1];
   })()`, 120000);
-  await writeFile(join(VIDEO, "apercu.jpg"), Buffer.from(planche, "base64"));
+  await writeFile(join(VIDEO, FR ? "apercu-fr.jpg" : "apercu.jpg"), Buffer.from(planche, "base64"));
   console.log(`video/apercu.jpg : ${temps.length} images clés · erreurs page : ${scene.erreurs.length ? scene.erreurs.join(" | ") : "aucune"}`);
   scene.fermer(); serveur.close(); await attendre(600); await rm(DOSSIER, { recursive: true, force: true }).catch(() => {});
   process.exit(0);
@@ -117,12 +119,12 @@ for (const c of cibles) {
   audio = await enc.evaluer("window.audio");
   const morceaux = [];
   for (let d = 0; d < taille; d += 8_000_000) morceaux.push(Buffer.from(await enc.evaluer(`window.tranche(${d}, ${Math.min(taille, d + 8_000_000)})`, 120000), "base64"));
-  const sortie = join(RACINE, "livrables", `PNUTS-film-${DUREE}s-${c.nom}.mp4`);
+  const sortie = join(RACINE, "livrables", `PNUTS-film-${DUREE}s${FR ? "-FR" : ""}-${c.nom}.mp4`);
   await writeFile(sortie, Buffer.concat(morceaux));
   sorties.push({ sortie, taille: (await stat(sortie)).size });
 }
 enc.fermer();
-await writeFile(join(RACINE, "livrables", "PNUTS-film-affiche.jpg"), affiche);
+await writeFile(join(RACINE, "livrables", `PNUTS-film-affiche${FR ? "-FR" : ""}.jpg`), affiche);
 serveur.close();
 await attendre(600); await rm(DOSSIER, { recursive: true, force: true }).catch(() => {});
 console.log(`\n${sorties.map((s) => `  ${s.sortie} · ${(s.taille / 1048576).toFixed(1)} Mo`).join("\n")}\n  ${DUREE} s · audio AAC : ${audio ? "oui" : "non"} · affiche : livrables/PNUTS-film-affiche.jpg`);

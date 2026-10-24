@@ -67,6 +67,7 @@ une nappe par saveur).
 ```
 node tools/video-render.mjs --apercu   # planche-contact des images clés : video/apercu.jpg
 node tools/video-render.mjs            # rendu complet → livrables/PNUTS-film-36s-1080p.mp4 et -720p.mp4 (+ affiche)
+node tools/video-render.mjs --fr       # version française (video/scene-fr.html) → PNUTS-film-36s-FR-*.mp4
 ```
 
 Le rendu dure plusieurs minutes : le lancer en tâche détachée (Start-Process) ; `--reprendre` garde les images déjà capturées.
