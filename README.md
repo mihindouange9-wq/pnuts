@@ -50,4 +50,8 @@ Creative Market, Tom Gordon Design.
 
 ## Déploiement
 
-`render.yaml` décrit un site statique Render (build `npm ci && npm run build`, publication `dist/`, en-têtes de sécurité et cache).
+**En ligne : https://pnuts.onrender.com** (service statique Render `pnuts`, créé le 24 octobre 2026 par l'API avec `tools/render-deploy.mjs` ; dépôt GitHub public https://github.com/mihindouange9-wq/pnuts, branche `main`).
+
+`render.yaml` décrit le site statique (build `npm ci && npm run build`, publication `dist/`, en-têtes de sécurité et cache). Un push sur `main` ne redéploie pas forcément (application GitHub de Render non installée) : relancer `RENDER_API_KEY=rnd_… node tools/render-deploy.mjs`, qui met aussi à jour les variables VITE_* listées dans le script.
+
+Le site est présenté dans les réalisations de MÉTHODE AURA (https://methode-aura.onrender.com) et crédite le studio en pied de page.
