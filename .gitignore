@@ -1,0 +1,7 @@
+node_modules
+dist
+.impeccable/review/
+tools/.cutout-check.*
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T00:00:00Z",
+  "title": "Design System: P’NUTS",
+  "extensions": {
+    "colorMeta": {
+      "orange": {
+        "role": "primary",
+        "displayName": "Orange P’NUTS",
+        "canonical": "#ec6426",
+        "tonalRamp": ["#3a1504", "#6b2708", "#9c3a0e", "#c84f18", "#ec6426", "#f28a58", "#f7b08c", "#fbd6c2"]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Jaune miel",
+        "canonical": "#f8a91f",
+        "tonalRamp": ["#3d2602", "#6e4504", "#a16708", "#cf8a10", "#f8a91f", "#fabd52", "#fcd187", "#fde6bd"]
+      },
+      "brown": {
+        "role": "tertiary",
+        "displayName": "Brun cacao",
+        "canonical": "#632713",
+        "tonalRamp": ["#2a0f06", "#4a1c0d", "#632713", "#8a3a1e", "#ad5231", "#c97652", "#dfa184", "#f1cfbd"]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Crème",
+        "canonical": "#fde3cf",
+        "tonalRamp": ["#4a2c17", "#7a4a2a", "#a86a42", "#cf8f64", "#e8b48c", "#f5cdae", "#fde3cf", "#fff3ea"]
+      },
+      "brown-70": { "role": "neutral", "displayName": "Brun 70 % (texte secondaire, placeholders)", "canonical": "rgb(99 39 19 / 0.7)" },
+      "brown-40": { "role": "neutral", "displayName": "Brun 40 % (bordures pointillées)", "canonical": "rgb(99 39 19 / 0.4)" },
+      "brown-18": { "role": "neutral", "displayName": "Brun 18 % (halo de focus)", "canonical": "rgb(99 39 19 / 0.18)" },
+      "brown-10": { "role": "neutral", "displayName": "Brun 10 % (voile)", "canonical": "rgb(99 39 19 / 0.1)" },
+      "cream-80": { "role": "neutral", "displayName": "Crème 80 % (texte secondaire sur brun)", "canonical": "rgb(253 227 207 / 0.8)" },
+      "cream-30": { "role": "neutral", "displayName": "Crème 30 % (filets sur brun)", "canonical": "rgb(253 227 207 / 0.3)" },
+      "cream-15": { "role": "neutral", "displayName": "Crème 15 % (voile)", "canonical": "rgb(253 227 207 / 0.15)" }
+    },
+    "contrast": [
+      { "pair": "brown on cream", "ratio": 9.0, "use": "texte courant" },
+      { "pair": "cream on brown", "ratio": 9.3, "use": "texte courant" },
+      { "pair": "brown on yellow", "ratio": 5.9, "use": "texte courant" },
+      { "pair": "yellow on brown", "ratio": 5.9, "use": "texte courant, accents" },
+      { "pair": "brown on orange", "ratio": 3.5, "use": "grand texte et autocollants seulement ; texte courant sur panneau crème" },
+      { "pair": "cream on orange", "ratio": null, "use": "interdit pour le texte" }
+    ],
+    "typographyMeta": {
+      "display-xl": { "displayName": "Display XL", "purpose": "Titre du hero et de l’histoire ; deux lignes, la seconde colorée ; data-fit." },
+      "display-lg": { "displayName": "Display LG", "purpose": "Titres de section et noms de saveur ; redéfini localement dans la campagne." },
+      "display-md": { "displayName": "Display MD", "purpose": "Nom de la saveur active dans le labo." },
+      "display-sm": { "displayName": "Display SM", "purpose": "Titres de pilier et colonnes étroites." },
+      "lead": { "displayName": "Lead", "purpose": "Accroche sous chaque titre, 34–44ch, text-wrap: pretty." },
+      "body": { "displayName": "Body", "purpose": "Texte courant, 62ch." },
+      "emphasis": { "displayName": "Emphasis", "purpose": "Descriptions de saveur et du labo, 24–30ch, graisse 600." },
+      "label": { "displayName": "Label", "purpose": "Autocollants, boutons, liens de navigation, chips ; capitales 0.08–0.1em." },
+      "label-xs": { "displayName": "Label XS", "purpose": "Barre d’annonce, titres de colonnes, index, bouton de langue ; capitales 0.12–0.16em." }
+    },
+    "fonts": {
+      "display": { "family": "Girthy Ultra Sans", "source": "src/assets/fonts/GirthyUltraSans*.{woff2,woff,otf,ttf} (détection à la compilation, classe html.has-girthy)", "fallback": "Archivo Variable, font-stretch 125 %, weight 900 (remplaçante provisoire déclarée)", "status": "stand-in actif : fichiers Girthy absents au 24 oct. 2026" },
+      "body": { "family": "Inter Variable", "fallback": "Inter, system-ui, -apple-system, Segoe UI, sans-serif", "weightsUsed": [400, 600, 700, 800] }
+    },
+    "shadows": [
+      { "name": "shadow-pack", "value": "drop-shadow(0 28px 32px rgb(99 39 19 / 0.35))", "purpose": "Sachets détourés du hero et du labo (filter)." },
+      { "name": "shadow-pack-soft", "value": "drop-shadow(0 18px 22px rgb(99 39 19 / 0.28))", "purpose": "Sachets des trois sections saveurs (filter)." },
+      { "name": "shadow-sticker", "value": "0 10px 24px -8px rgb(99 39 19 / 0.45)", "purpose": "Tous les autocollants." },
+      { "name": "shadow-hover", "value": "0 14px 28px -12px rgb(99 39 19 / 0.7)", "purpose": "Bouton survolé ou focalisé, soulevé de 2 px." },
+      { "name": "shadow-tab-selected", "value": "0 16px 30px -14px rgb(99 39 19 / 0.7)", "purpose": "Onglet de saveur sélectionné." },
+      { "name": "focus-ring-form", "value": "0 0 0 4px rgb(99 39 19 / 0.18)", "purpose": "Pilule du formulaire en focus-within." },
+      { "name": "focus-ring-form-invalid", "value": "0 0 0 4px rgb(236 100 38 / 0.25)", "purpose": "Pilule du formulaire invalide, bordure orange." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Transitions CSS par défaut (survols, soulèvements, soulignements)." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.65, 0, 0.35, 1)", "purpose": "Fermeture du menu mobile, coulées de couleur CSS." },
+      { "name": "dur-fast", "value": "180ms", "purpose": "État actif du bouton." },
+      { "name": "dur", "value": "320ms", "purpose": "Survols et remplissages." },
+      { "name": "dur-slow", "value": "640ms", "purpose": "Nav défilée, menu mobile, soulèvement des sachets, zoom des tuiles." },
+      { "name": "gsap-reveal-lines", "value": "from yPercent 110, rotate 2, expo.out, 1s, stagger 0.08, once", "purpose": "Révélation masquée ligne par ligne de tout titre d’affichage." },
+      { "name": "gsap-reveal-block", "value": "from y 28, opacity 0, expo.out, 0.9s, stagger 0.08, once", "purpose": "Entrée des blocs de texte, panneaux, emplacements." },
+      { "name": "gsap-field-flow", "value": "backgroundColor, power2.inOut, 0.7–0.9s", "purpose": "La couleur du champ coule d’une saveur à l’autre (saveurs au défilement, labo au choix)." },
+      { "name": "gsap-lab-switch", "value": "sortant xPercent ∓40 rotate ∓10 scale 0.9 opacity 0 power3.in 0.55s ; entrant depuis xPercent ±40 rotate ±10 expo.out 0.9s à 0.3s", "purpose": "Bascule de sachet du labo." },
+      { "name": "gsap-sticker-pop", "value": "from scale 0.6, rotate -12, opacity 0, back.out(2), 0.8s", "purpose": "Autocollant du hero." },
+      { "name": "gsap-parallax", "value": "ease none, scrub 0.6–1 ; sachets du hero yPercent 10, texte yPercent -8 opacity 0.4, cacahuètes y -24…-110 rotate 40–44", "purpose": "Parallaxe retenue du hero et de l’histoire." },
+      { "name": "marquee-announce", "value": "translateX(-50%) 38s linear infinite", "purpose": "Barre d’annonce." },
+      { "name": "marquee-statement", "value": "GSAP x -largeur, max(18s, largeur/90), linear, repeat -1, timeScale ×1.6 au défilement bas, inversé au défilement haut", "purpose": "Bandeau défilant." },
+      { "name": "reduced-motion", "value": "animation/transition 0.01ms, boucles arrêtées, révélations GSAP non créées, scroll-behavior auto", "purpose": "prefers-reduced-motion: reduce." }
+    ],
+    "breakpoints": [
+      { "name": "lab-tabs-stack", "value": "30em", "purpose": "Onglets du labo redeviennent des pilules empilées." },
+      { "name": "footer-single", "value": "36em", "purpose": "Pied de page à une colonne." },
+      { "name": "hero-compact", "value": "40em", "purpose": "Hero sans hauteur minimale, boutons pleine largeur." },
+      { "name": "nav-compact", "value": "48em", "purpose": "Nav 4rem au lieu de 4.5rem." },
+      { "name": "sections-single", "value": "56em", "purpose": "Saveurs, histoire, piliers, campagne, distribution, newsletter, pied de page à une colonne ; mosaïque à deux colonnes ; formulaire empilé." },
+      { "name": "menu-mobile", "value": "64em", "purpose": "Hero et labo à une colonne, menu plein écran." }
+    ],
+    "geometry": {
+      "seam": { "height": "clamp(4rem, 9vw, 10rem)", "clipPath": "polygon(0 0, 100% 0, 100% 4%, 0 100%)", "reverse": "polygon(0 0, 100% 0, 100% 100%, 0 4%)", "angleAt1440": "≈5°", "color": "var(--seam-color) = champ précédent" },
+      "heroWindow": { "aspectRatio": "5 / 6 (4 / 4.2 ≤ 64em)", "band": "jaune, top 19 %, height 15 %, rotate(-6deg), débord ±10 %", "packs": "trois sachets ancrés en bas, latéraux translateX(±40 %) rotate(±11deg) scale(0.84), Honey devant à 66 % de large" },
+      "stickerTilt": { "default": "-2deg", "range": "-3deg à +4deg", "lab": "0deg" },
+      "peanut": { "viewBox": "0 0 64 64", "fill": "currentColor", "wordmark": "0.5em, translateY(-0.55em) rotate(14deg), orange sur clair / jaune sur brun" },
+      "touchTarget": "2.75rem",
+      "borderWidth": "2px",
+      "focusOutline": "3px solid, offset 3px, orange (brun sur orange/jaune, jaune sur brun)"
+    }
+  },
+  "components": [
+    {
+      "name": "Bouton principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pilule brune à texte crème ; un calque orange monte au survol et le texte passe au brun.",
+      "html": "<button class=\"ds-btn\">Discover the flavors <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M6 13l6 6 6-6\"/></svg></button>",
+      "css": ".ds-btn { --btn-bg: var(--brown, #632713); --btn-fg: var(--cream, #fde3cf); --btn-ring: var(--brown, #632713); position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 3.25rem; padding: 0.9rem 1.75rem; border-radius: 999px; border: 2px solid var(--btn-ring); background: var(--btn-bg); color: var(--btn-fg); font-family: 'Inter Variable', Inter, system-ui, sans-serif; font-weight: 800; font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; overflow: hidden; isolation: isolate; transition: transform 320ms cubic-bezier(0.16,1,0.3,1), color 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms cubic-bezier(0.16,1,0.3,1); } .ds-btn::after { content: ''; position: absolute; inset: 0; background: var(--orange, #ec6426); transform: translateY(101%); transition: transform 320ms cubic-bezier(0.16,1,0.3,1); z-index: -1; border-radius: inherit; } .ds-btn:hover::after, .ds-btn:focus-visible::after { transform: translateY(0); } .ds-btn:hover, .ds-btn:focus-visible { color: var(--brown, #632713); box-shadow: 0 14px 28px -12px rgb(99 39 19 / 0.7); transform: translateY(-2px); } .ds-btn:focus-visible { outline: 3px solid var(--orange, #ec6426); outline-offset: 3px; } .ds-btn:active { transform: translateY(0) scale(0.98); transition-duration: 180ms; } .ds-btn svg { width: 1.1em; height: 1.1em; flex: none; }"
+    },
+    {
+      "name": "Bouton contour",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Même pilule, fond transparent, texte et bordure bruns ; remplissage orange au survol.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Our story</a>",
+      "css": ".ds-btn-ghost { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 3.25rem; padding: 0.9rem 1.75rem; border-radius: 999px; border: 2px solid var(--brown, #632713); background: transparent; color: var(--brown, #632713); font-family: 'Inter Variable', Inter, system-ui, sans-serif; font-weight: 800; font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; overflow: hidden; isolation: isolate; transition: transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-ghost::after { content: ''; position: absolute; inset: 0; background: var(--orange, #ec6426); transform: translateY(101%); transition: transform 320ms cubic-bezier(0.16,1,0.3,1); z-index: -1; border-radius: inherit; } .ds-btn-ghost:hover::after, .ds-btn-ghost:focus-visible::after { transform: translateY(0); } .ds-btn-ghost:hover, .ds-btn-ghost:focus-visible { box-shadow: 0 14px 28px -12px rgb(99 39 19 / 0.7); transform: translateY(-2px); } .ds-btn-ghost:focus-visible { outline: 3px solid var(--orange, #ec6426); outline-offset: 3px; }"
+    },
+    {
+      "name": "Bouton crème (sur brun)",
+      "kind": "button",
+      "refersTo": "button-cream",
+      "description": "Pilule crème pour les champs bruns ; remplissage jaune au survol.",
+      "html": "<div style=\"background:#632713;padding:1.5rem;border-radius:1.5rem;display:inline-block\"><button class=\"ds-btn-cream\">Explore the flavors</button></div>",
+      "css": ".ds-btn-cream { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 3.25rem; padding: 0.9rem 1.75rem; border-radius: 999px; border: 2px solid var(--cream, #fde3cf); background: var(--cream, #fde3cf); color: var(--brown, #632713); font-family: 'Inter Variable', Inter, system-ui, sans-serif; font-weight: 800; font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; cursor: pointer; overflow: hidden; isolation: isolate; transition: transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-cream::after { content: ''; position: absolute; inset: 0; background: var(--yellow, #f8a91f); transform: translateY(101%); transition: transform 320ms cubic-bezier(0.16,1,0.3,1); z-index: -1; border-radius: inherit; } .ds-btn-cream:hover::after, .ds-btn-cream:focus-visible::after { transform: translateY(0); } .ds-btn-cream:hover, .ds-btn-cream:focus-visible { box-shadow: 0 14px 28px -12px rgb(99 39 19 / 0.7); transform: translateY(-2px); } .ds-btn-cream:focus-visible { outline: 3px solid var(--yellow, #f8a91f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Autocollant",
+      "kind": "chip",
+      "refersTo": "sticker",
+      "description": "Étiquette inclinée à contour brun 2 px ; variantes crème, jaune, orange, brun.",
+      "html": "<span class=\"ds-sticker\">Flavor 01</span> <span class=\"ds-sticker ds-sticker--yellow\" style=\"--tilt:4deg\">New in Gabon</span> <span class=\"ds-sticker ds-sticker--orange\" style=\"--tilt:-2deg\">Bold taste. Real crunch.</span> <span class=\"ds-sticker ds-sticker--brown\" style=\"--tilt:2deg\">Flavor 03</span>",
+      "css": ".ds-sticker { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.45em 0.9em; margin: 0.5rem; border: 2px solid var(--brown, #632713); border-radius: 0.75rem; background: var(--cream, #fde3cf); color: var(--brown, #632713); font-family: 'Inter Variable', Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.1; box-shadow: 0 10px 24px -8px rgb(99 39 19 / 0.45); transform: rotate(var(--tilt, -2deg)); transform-origin: center; } .ds-sticker--yellow { background: var(--yellow, #f8a91f); } .ds-sticker--orange { background: var(--orange, #ec6426); } .ds-sticker--brown { background: var(--brown, #632713); color: var(--cream, #fde3cf); border-color: var(--cream, #fde3cf); }"
+    },
+    {
+      "name": "Chip réseau",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pilule à bordure brune ; s’inverse au survol ; variante pointillée « bientôt ».",
+      "html": "<a class=\"ds-chip\" href=\"#\">Instagram</a> <span class=\"ds-chip ds-chip--soon\">TikTok <small>Soon</small></span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 0.5em; min-height: 2.75rem; padding: 0.5rem 1rem; margin: 0.25rem; border: 2px solid var(--brown, #632713); border-radius: 999px; color: var(--brown, #632713); font-family: 'Inter Variable', Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 800; letter-spacing: 0.06em; text-decoration: none; transition: background-color 320ms cubic-bezier(0.16,1,0.3,1), color 320ms cubic-bezier(0.16,1,0.3,1); } a.ds-chip:hover, a.ds-chip:focus-visible { background: var(--brown, #632713); color: var(--cream, #fde3cf); } .ds-chip:focus-visible { outline: 3px solid var(--orange, #ec6426); outline-offset: 3px; } .ds-chip--soon { border-style: dashed; color: rgb(99 39 19 / 0.7); } .ds-chip--soon small { font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.7em; color: var(--orange, #ec6426); }"
+    },
+    {
+      "name": "Champ newsletter",
+      "kind": "input",
+      "refersTo": "input-row",
+      "description": "Pilule crème à bordure brune enveloppant l’entrée et le bouton ; halo brun au focus, bordure orange en erreur.",
+      "html": "<form class=\"ds-form\" onsubmit=\"return false\"><div class=\"ds-form-row\"><input class=\"ds-form-input\" type=\"email\" placeholder=\"you@example.com\" aria-label=\"Email\"><button class=\"ds-form-btn\" type=\"submit\">Sign me up</button></div><p class=\"ds-form-privacy\">No spam. Unsubscribe anytime.</p></form>",
+      "css": ".ds-form { display: grid; gap: 1rem; font-family: 'Inter Variable', Inter, system-ui, sans-serif; color: var(--brown, #632713); } .ds-form-row { display: flex; gap: 0.5rem; padding: 0.4rem; border: 2px solid var(--brown, #632713); border-radius: 999px; background: var(--cream, #fde3cf); transition: box-shadow 320ms cubic-bezier(0.16,1,0.3,1); } .ds-form-row:focus-within { box-shadow: 0 0 0 4px rgb(99 39 19 / 0.18); } .ds-form-row.is-invalid { border-color: var(--orange, #ec6426); box-shadow: 0 0 0 4px rgb(236 100 38 / 0.25); } .ds-form-input { flex: 1; min-width: 0; padding: 0.75rem 1.25rem; border: 0; background: transparent; color: var(--brown, #632713); font: inherit; font-weight: 600; outline: none; } .ds-form-input::placeholder { color: rgb(99 39 19 / 0.7); } .ds-form-btn { display: inline-flex; align-items: center; min-height: 3.25rem; padding: 0.9rem 1.75rem; border-radius: 999px; border: 2px solid var(--brown, #632713); background: var(--brown, #632713); color: var(--cream, #fde3cf); font: inherit; font-weight: 800; font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background-color 320ms, color 320ms; } .ds-form-btn:hover { background: var(--orange, #ec6426); color: var(--brown, #632713); } .ds-form-privacy { margin: 0; font-size: 0.875rem; font-weight: 600; color: rgb(99 39 19 / 0.7); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Barre crème (état défilé) : mot-symbole à cacahuète, liens capitales à soulignement orange, bouton de langue pilule, CTA compacte.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-wordmark\"><span>P</span><svg class=\"ds-peanut\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M32 3c8.6 0 13.9 6.7 13.2 15.4-.4 4.3-3.4 7.1-3.4 10.8s5.5 7.6 4.8 15.6C45.8 54.1 39.2 61 32 61S18.2 54.1 17.4 44.8c-.7-8 4.8-11.9 4.8-15.6s-3-6.5-3.4-10.8C18.1 9.7 23.4 3 32 3Z\"/></svg><span>NUTS</span></span><ul class=\"ds-nav-links\"><li><a class=\"ds-nav-link\" href=\"#\" aria-current=\"true\">Products</a></li><li><a class=\"ds-nav-link\" href=\"#\">Our story</a></li><li><a class=\"ds-nav-link\" href=\"#\">Find us</a></li></ul><div class=\"ds-nav-actions\"><button class=\"ds-lang\" type=\"button\">FR</button><a class=\"ds-nav-cta\" href=\"#\">Explore</a></div></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 4.5rem; padding: 0 1.5rem; background: var(--cream, #fde3cf); color: var(--brown, #632713); border-bottom: 2px solid var(--brown, #632713); font-family: 'Inter Variable', Inter, system-ui, sans-serif; } .ds-wordmark { display: inline-flex; align-items: center; gap: 0.02em; font-family: 'Girthy Ultra Sans', 'Archivo Variable', sans-serif; font-weight: 900; font-stretch: 125%; font-size: 1.75rem; letter-spacing: -0.01em; line-height: 1; text-transform: uppercase; } .ds-peanut { width: 0.5em; height: 0.5em; margin-inline: 0.06em; transform: translateY(-0.55em) rotate(14deg); color: var(--orange, #ec6426); } .ds-nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; } .ds-nav-link { position: relative; display: inline-block; padding: 0.5rem 0; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: inherit; } .ds-nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0.1rem; height: 3px; background: var(--orange, #ec6426); border-radius: 2px; transform: scaleX(0); transform-origin: right; transition: transform 320ms cubic-bezier(0.16,1,0.3,1); } .ds-nav-link:hover::after, .ds-nav-link:focus-visible::after, .ds-nav-link[aria-current='true']::after { transform: scaleX(1); transform-origin: left; } .ds-nav-actions { display: flex; align-items: center; gap: 0.75rem; } .ds-lang { display: inline-flex; align-items: center; justify-content: center; min-width: 3rem; min-height: 2.75rem; padding: 0.5rem 0.8rem; border: 2px solid currentColor; border-radius: 999px; background: none; color: inherit; font: inherit; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.12em; cursor: pointer; transition: background-color 320ms, color 320ms; } .ds-lang:hover { background: var(--brown, #632713); color: var(--cream, #fde3cf); } .ds-nav-cta { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.6rem 1.25rem; border-radius: 999px; border: 2px solid var(--brown, #632713); background: var(--brown, #632713); color: var(--cream, #fde3cf); font-weight: 800; font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background-color 320ms, color 320ms; } .ds-nav-cta:hover { background: var(--orange, #ec6426); color: var(--brown, #632713); }"
+    },
+    {
+      "name": "Fenêtre et panneau crème",
+      "kind": "card",
+      "refersTo": "window",
+      "description": "Fenêtre orange à grand arrondi avec bande jaune en biais et cacahuètes crème ; à côté, le panneau crème qui porte le texte courant sur un champ orange.",
+      "html": "<div class=\"ds-field\"><div class=\"ds-window\"><div class=\"ds-window-band\"></div><svg class=\"ds-window-peanut ds-window-peanut--a\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M32 3c8.6 0 13.9 6.7 13.2 15.4-.4 4.3-3.4 7.1-3.4 10.8s5.5 7.6 4.8 15.6C45.8 54.1 39.2 61 32 61S18.2 54.1 17.4 44.8c-.7-8 4.8-11.9 4.8-15.6s-3-6.5-3.4-10.8C18.1 9.7 23.4 3 32 3Z\"/></svg><svg class=\"ds-window-peanut ds-window-peanut--b\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M32 3c8.6 0 13.9 6.7 13.2 15.4-.4 4.3-3.4 7.1-3.4 10.8s5.5 7.6 4.8 15.6C45.8 54.1 39.2 61 32 61S18.2 54.1 17.4 44.8c-.7-8 4.8-11.9 4.8-15.6s-3-6.5-3.4-10.8C18.1 9.7 23.4 3 32 3Z\"/></svg><span class=\"ds-window-label\">Flavor 02</span></div><div class=\"ds-panel\"><p class=\"ds-panel-text\">P’NUTS is launching in Gabon and building its distribution network step by step.</p><p class=\"ds-panel-note\">No stores yet. Partners welcome.</p></div></div>",
+      "css": ".ds-field { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; padding: 2rem; background: var(--orange, #ec6426); border-radius: 1.5rem; font-family: 'Inter Variable', Inter, system-ui, sans-serif; color: var(--brown, #632713); } .ds-window { position: relative; aspect-ratio: 5 / 6; border-radius: clamp(1.5rem, 4vw, 3rem); background: var(--yellow, #f8a91f); overflow: hidden; } .ds-window-band { position: absolute; left: -10%; right: -10%; top: 19%; height: 15%; background: var(--cream, #fde3cf); transform: rotate(-6deg); } .ds-window-peanut { position: absolute; color: var(--brown, #632713); opacity: 0.35; width: 4rem; height: 4rem; } .ds-window-peanut--a { top: 6%; left: 6%; transform: rotate(-24deg); } .ds-window-peanut--b { bottom: 8%; right: 7%; transform: rotate(32deg); } .ds-window-label { position: absolute; top: 1rem; left: 1rem; display: inline-flex; padding: 0.45em 0.9em; border: 2px solid var(--brown, #632713); border-radius: 0.75rem; background: var(--brown, #632713); color: var(--cream, #fde3cf); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.1; box-shadow: 0 10px 24px -8px rgb(99 39 19 / 0.45); transform: rotate(-3deg); } .ds-panel { align-self: start; display: grid; gap: 1rem; padding: clamp(1.5rem, 4vw, 3rem); background: var(--cream, #fde3cf); border-radius: clamp(1.5rem, 4vw, 3rem); } .ds-panel-text { margin: 0; font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem); line-height: 1.5; } .ds-panel-note { margin: 0; font-size: 0.875rem; font-weight: 600; color: rgb(99 39 19 / 0.7); }"
+    },
+    {
+      "name": "Onglet du labo",
+      "kind": "custom",
+      "refersTo": "lab-tab",
+      "description": "Station de saveur : pilule à bordure courante, pastille de couleur, nom en police d’affichage ; sélectionnée en brun plein avec ombre.",
+      "html": "<div class=\"ds-lab\" role=\"tablist\"><button class=\"ds-lab-tab\" role=\"tab\" aria-selected=\"true\"><span class=\"ds-lab-swatch\" style=\"background:#f8a91f\"></span><span class=\"ds-lab-name\">Honey</span></button><button class=\"ds-lab-tab\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-lab-swatch\" style=\"background:#ec6426\"></span><span class=\"ds-lab-name\">Zesty Lemon</span></button><button class=\"ds-lab-tab\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-lab-swatch\" style=\"background:#632713\"></span><span class=\"ds-lab-name\">Smoked Paprika</span></button></div>",
+      "css": ".ds-lab { display: grid; gap: 0.75rem; padding: 1.5rem; background: var(--yellow, #f8a91f); color: var(--brown, #632713); border-radius: 1.5rem; } .ds-lab-tab { display: flex; align-items: center; gap: 1rem; min-height: 4.25rem; padding: 0.75rem 1.25rem 0.75rem 0.75rem; border: 2px solid currentColor; border-radius: 999px; background: none; color: inherit; text-align: left; cursor: pointer; font: inherit; transition: background-color 320ms cubic-bezier(0.16,1,0.3,1), color 320ms cubic-bezier(0.16,1,0.3,1), transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms cubic-bezier(0.16,1,0.3,1); } .ds-lab-tab:hover { transform: translateX(6px); } .ds-lab-tab:focus-visible { outline: 3px solid var(--brown, #632713); outline-offset: 3px; } .ds-lab-tab[aria-selected='true'] { background: var(--brown, #632713); color: var(--cream, #fde3cf); border-color: var(--brown, #632713); box-shadow: 0 16px 30px -14px rgb(99 39 19 / 0.7); } .ds-lab-swatch { flex: none; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 2px solid var(--brown, #632713); } .ds-lab-name { font-family: 'Girthy Ultra Sans', 'Archivo Variable', sans-serif; font-stretch: 125%; font-weight: 900; font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem); text-transform: uppercase; line-height: 1; letter-spacing: 0.01em; }"
+    },
+    {
+      "name": "Titre d’affichage avec couture",
+      "kind": "custom",
+      "refersTo": "display-xl",
+      "description": "Champ crème cousu sur un champ brun ; titre deux lignes, la seconde orange, en capitales ultra-grasses interlignées 0.9.",
+      "html": "<div class=\"ds-seam-demo\"><div class=\"ds-seam-prev\"></div><section class=\"ds-seam-field\"><h2 class=\"ds-display\"><span class=\"ds-line\"><span>Small nuts.</span></span><span class=\"ds-line ds-line--accent\"><span>Big attitude.</span></span></h2><p class=\"ds-lead\">Sweet, bold and unapologetically crunchy.</p></section></div>",
+      "css": ".ds-seam-demo { border-radius: 1.5rem; overflow: hidden; } .ds-seam-prev { height: 3rem; background: var(--brown, #632713); } .ds-seam-field { position: relative; isolation: isolate; padding: 5rem 2rem 2.5rem; background: var(--cream, #fde3cf); color: var(--brown, #632713); } .ds-seam-field::before { content: ''; position: absolute; inset: -1px 0 auto 0; height: 4rem; background: var(--brown, #632713); clip-path: polygon(0 0, 100% 0, 100% 4%, 0 100%); pointer-events: none; z-index: 1; } .ds-display { margin: 0; font-family: 'Girthy Ultra Sans', 'Archivo Variable', sans-serif; font-weight: 900; font-stretch: 125%; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.015em; font-size: clamp(2.5rem, 1.6rem + 4vw, 5.25rem); text-wrap: balance; } .ds-line { display: block; overflow: hidden; padding: 0.14em 0.04em 0.06em 0; margin: -0.14em 0 -0.06em 0; } .ds-line > span { display: block; } .ds-line--accent > span { color: var(--orange, #ec6426); } .ds-lead { margin: 1.5rem 0 0; font-family: 'Inter Variable', Inter, system-ui, sans-serif; font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem); line-height: 1.5; max-width: 34ch; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La livrée",
+    "overview": "Le site est habillé comme un taxi-bus ou une devanture peinte de Libreville : les quatre couleurs officielles se succèdent en champs pleins qui occupent des sections entières (crème, brun, jaune, orange, brun, crème, jaune, orange, crème, brun), séparés par des coutures diagonales d’environ 5°. Les sachets réels, détourés, sont la seule preuve commerciale ; ils apparaissent dans de grandes « fenêtres » arrondies ou sortent d’elles. Autour, le vocabulaire est celui des décalques : autocollants inclinés à contour brun de 2 px, boutons pilule, numéros géants, et une seule silhouette dessinée (la cacahuète SVG) qui tient lieu de tout ornement.\n\nLa densité est faible et le rythme large : un titre d’affichage par section, un paragraphe d’accroche de 34 à 44 caractères de large, une action. La typographie d’affichage est ultra-grasse, étendue et en capitales ; elle est si grande qu’elle est ajustée à l’exécution (data-fit) pour qu’aucun mot ne déborde de sa colonne, en anglais comme en français. Le texte courant reste en Inter, sobre et foncé, jamais gris : sur un champ coloré, il est brun ou crème, et quand il doit devenir discret il est teinté par transparence de la même teinte (brown-70, cream-80).\n\nRefus confirmés par la construction : pas de gabarit DTC « fond crème + produit flottant + cartes égales » ; aucun gris, aucun blanc pur, aucune cinquième couleur ; aucune icône pictographique en dehors des neuf traits d’interface (flèches, menu, croix, coche, alerte, info, courrier) ; aucun visuel de substitution à la place des sachets.",
+    "keyCharacteristics": [
+      "Quatre couleurs opaques en champs pleins ; la couleur change de section en section, jamais au sein d’un bloc.",
+      "Coutures diagonales ≈5° (clip-path sur un pseudo-élément de hauteur seam) entre deux champs.",
+      "Fenêtres à grands arrondis (24–48 px) qui cadrent les sachets ; panneaux crème du même rayon pour le texte courant posé sur l’orange.",
+      "Autocollants inclinés (−3° à +4°), contour brun 2 px, ombre brune portée.",
+      "Titres en capitales ultra-grasses, interlignage 0.9, une ligne colorée (orange ou jaune) par titre de deux lignes.",
+      "Mouvement GSAP retenu : révélations masquées ligne par ligne, couleur de champ qui « coule », parallaxe légère ; tout devient instantané en prefers-reduced-motion."
+    ],
+    "rules": [
+      { "name": "La règle des quatre", "body": "Aucune couleur hors orange, yellow, cream, brown n’apparaît, pas même en ombre : les ombres sont du brun translucide (rgb(99 39 19 / α)), les gris sont des transparences de brun ou de crème.", "section": "colors" },
+      { "name": "La règle du panneau crème", "body": "Le texte courant ne se pose jamais directement sur l’orange ; il est placé dans un panneau crème au rayon window. Sur orange, seul le brun en taille d’affichage (≥ display-sm) ou en autocollant est admis. Crème sur orange n’est jamais utilisé pour du texte.", "section": "colors" },
+      { "name": "La règle du champ", "body": "La couleur du texte secondaire est tirée du champ : brun translucide sur crème/jaune, crème translucide sur brun. Un opacity léger (0.85–0.9) est toléré sur de petits labels, jamais un gris nommé.", "section": "colors" },
+      { "name": "La règle du mot entier", "body": "Tout titre d’affichage porte data-fit : il repart de sa taille CSS puis est réduit par paliers de 4 % (plancher 26 px) jusqu’à ce qu’aucun mot ne déborde de sa colonne, après chargement des polices, au redimensionnement et au changement de langue. On ne coupe jamais un mot et on n’ajoute jamais de césure.", "section": "typography" },
+      { "name": "La règle de la ligne colorée", "body": "Un titre de deux lignes colore sa seconde ligne : orange sur champ crème, jaune sur champ brun. Jamais la première, jamais les deux.", "section": "typography" },
+      { "name": "La règle de la révélation masquée", "body": "Chaque ligne de titre est un .line à overflow: hidden dont le span entre par yPercent: 110, rotation 2°, expo.out, 1 s, décalage 0.08 s, une seule fois au passage dans la fenêtre.", "section": "typography" },
+      { "name": "La règle de l’ombre brune", "body": "Aucune ombre noire ou grise : toute ombre est rgb(99 39 19 / α), portée vers le bas, floue, jamais décalée en dur.", "section": "elevation" },
+      { "name": "La règle de la couture", "body": "La transition entre deux champs est une couture diagonale : un ::before de hauteur seam, de la couleur du champ précédent (--seam-color), découpé par polygon(0 0, 100% 0, 100% 4%, 0 100%) (ou son miroir seam--reverse), soit ≈5° à 1440 px. Jamais de dégradé, jamais de trait horizontal entre deux champs.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do poser chaque section sur un champ plein d’une des quatre couleurs et la relier à la précédente par une couture diagonale ≈5° de la couleur du champ précédent.",
+      "Do cadrer tout sachet dans une fenêtre au rayon window (24–48 px) d’une couleur différente du champ, et le laisser dépasser de la fenêtre si la composition le demande.",
+      "Do placer le texte courant posé sur l’orange dans un panneau crème au rayon window ; le brun directement sur orange est réservé aux tailles d’affichage et aux autocollants.",
+      "Do colorer la seconde ligne d’un titre de deux lignes (orange sur crème, jaune sur brun) et donner data-fit à tout titre d’affichage.",
+      "Do incliner les autocollants de −3° à +4° au plus et leur donner le contour brun 2 px, le rayon 0.75rem et l’ombre d’autocollant.",
+      "Do teinter le texte secondaire avec brown-70 ou cream-80, et utiliser des bordures 2 px de la couleur du texte du champ.",
+      "Do écrire toute piste de grille minmax(0, 1fr) et garder des cibles tactiles d’au moins 2.75rem.",
+      "Do rendre chaque animation instantanée sous prefers-reduced-motion et n’animer que transform, opacity et background-color."
+    ],
+    "donts": [
+      "Don’t introduire un gris, un noir, un blanc pur ou une cinquième couleur, même pour une ombre ou un filet.",
+      "Don’t écrire du texte crème sur orange, ni du texte courant brun directement sur orange.",
+      "Don’t séparer deux champs par un trait horizontal, un dégradé ou une vague.",
+      "Don’t incliner autre chose que les autocollants, la bande jaune du hero, les sachets latéraux et les cacahuètes décoratives.",
+      "Don’t ajouter un motif décoratif autre que la silhouette de cacahuète SVG, ni une icône hors des neuf traits d’interface existants.",
+      "Don’t remplacer un sachet réel par une illustration, une photo de substitution ou un rendu générique.",
+      "Don’t laisser un mot de titre déborder de sa colonne ou le couper par césure ; réduire la taille par data-fit.",
+      "Don’t utiliser Arial Black, Impact ou toute face système dans la pile d’affichage ; seule Archivo Variable 125 %/900 remplace Girthy Ultra Sans en attendant ses fichiers."
+    ],
+    "adaptations": [
+      "La bande jaune du hero traverse le tiers haut de la fenêtre orange (top 19 %, hauteur 15 %, −6°) et non le bas : les trois sachets couvrent les 80 % inférieurs de la fenêtre.",
+      "La police d’affichage rendue est Archivo Variable (font-stretch 125 %, graisse 900), remplaçante déclarée jusqu’à la livraison des fichiers Girthy Ultra Sans ; la classe html.has-girthy bascule alors font-stretch, interlettrage et interlignage.",
+      "Les titres d’affichage portent data-fit et sont réduits à l’exécution pour qu’aucun mot ne déborde de sa colonne en EN ni en FR.",
+      "Toutes les pistes de grille sont écrites minmax(0, 1fr) et chaque cellule porte min-width: 0.",
+      "L’inclinaison des autocollants va jusqu’à +4° (hero) alors que le contrat visait ±3° ; la construction fait foi."
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+# Déploiement Render : site statique Vite. Variables à renseigner dans le tableau de bord Render
+# (VITE_SITE_URL, VITE_CONTACT_EMAIL, VITE_NEWSLETTER_URL, VITE_SOCIAL_*).
+services:
+  - type: web
+    name: pnuts
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /packs/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
