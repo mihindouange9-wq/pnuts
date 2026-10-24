@@ -5,3 +5,7 @@ tools/.cutout-check.*
 *.log
 .DS_Store
 Thumbs.db
+livrables/
+video/.rendu/
+video/rendu.log
+video/rendu.err

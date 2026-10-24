@@ -55,3 +55,18 @@ Creative Market, Tom Gordon Design.
 `render.yaml` décrit le site statique (build `npm ci && npm run build`, publication `dist/`, en-têtes de sécurité et cache). Un push sur `main` ne redéploie pas forcément (application GitHub de Render non installée) : relancer `RENDER_API_KEY=rnd_… node tools/render-deploy.mjs`, qui met aussi à jour les variables VITE_* listées dans le script.
 
 Le site est présenté dans les réalisations de MÉTHODE AURA (https://methode-aura.onrender.com) et crédite le studio en pied de page.
+
+## Le film (`video/`)
+
+Film de présentation de 36 s en 1920 × 1080, construit depuis la charte : `video/scene.html` (sept plans sur une ligne de temps GSAP
+exposée par `window.seek` : cacahuète et mot-symbole, hero aux trois sachets, Honey, Zesty Lemon, Smoked Paprika, bandeau et trois
+piliers, signature et collaboration MÉTHODE AURA), `tools/video-render.mjs` (capture image par image dans Chrome, encodage MP4
+H.264 + AAC par WebCodecs dans `video/encodeur.html`, bande-son synthétisée : pulsation à 120 bpm avec « crunch » sur les contretemps,
+une nappe par saveur).
+
+```
+node tools/video-render.mjs --apercu   # planche-contact des images clés : video/apercu.jpg
+node tools/video-render.mjs            # rendu complet → livrables/PNUTS-film-36s-1080p.mp4 et -720p.mp4 (+ affiche)
+```
+
+Le rendu dure plusieurs minutes : le lancer en tâche détachée (Start-Process) ; `--reprendre` garde les images déjà capturées.
