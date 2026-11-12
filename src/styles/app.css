@@ -61,10 +61,12 @@ h3,
 h4,
 p,
 ul,
+ol,
 figure {
   margin: 0;
 }
-ul {
+ul,
+ol {
   padding: 0;
   list-style: none;
 }
@@ -390,6 +392,16 @@ html.has-girthy .sticker--big {
   height: 1.1em;
   flex: none;
 }
+/* Très petits téléphones (320 px) : les libellés français les plus longs ne doivent ni être rognés ni élargir la page */
+@media (max-width: 22.5em) {
+  .btn {
+    max-width: 100%;
+    padding-inline: 1rem;
+    letter-spacing: 0.05em;
+    white-space: normal;
+    text-align: center;
+  }
+}
 
 .peanut {
   display: inline-block;
@@ -667,6 +679,21 @@ html.has-girthy .menu__link {
   }
 }
 
+/* Écrans bas (téléphone en paysage) : tout le menu doit tenir, et rester défilable au besoin */
+.menu {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+@media (max-height: 30em) and (orientation: landscape) {
+  .menu {
+    padding-bottom: var(--space-4);
+  }
+  .menu__link {
+    font-size: clamp(1.75rem, 9vh, 2.5rem);
+    padding: 0.2rem 0;
+  }
+}
+
 /* ───────────────────────── Hero ───────────────────────── */
 .hero {
   position: relative;
@@ -855,6 +882,10 @@ html.has-girthy .menu__link {
 }
 .flavors__head .lead {
   max-width: 40ch;
+}
+/* Archivo (remplaçant) crène fortement « K␠Y » : sans ce complément, « PICK YOUR » se lit en un seul mot */
+html:not(.has-girthy) .flavors__title {
+  word-spacing: 0.12em;
 }
 .flavor {
   position: relative;
@@ -1275,6 +1306,7 @@ html.has-girthy .lab__tab-name {
 .story__peanuts {
   position: absolute;
   inset: auto 0 -2rem;
+  z-index: -1; /* derrière le texte et l'étiquette, au-dessus du fond (.field isole l'empilement) */
   display: flex;
   justify-content: space-between;
   pointer-events: none;
@@ -1371,6 +1403,17 @@ html.has-girthy .lab__tab-name {
   .pillar__text {
     grid-area: text;
     max-width: none;
+  }
+}
+/* Petits écrans : la colonne suit la largeur réelle du numéro, sinon le second chiffre est rogné */
+@media (max-width: 30em) {
+  .pillar {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+@media (max-width: 22.5em) {
+  .pillar__num {
+    font-size: var(--display-md);
   }
 }
 
@@ -1696,7 +1739,7 @@ a.chip:hover {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: 0.7em;
+  font-size: var(--text-xs); /* 12 px : 0.7em donnait 9,8 px, sous le plancher de lisibilité */
   color: var(--orange);
 }
 
@@ -1869,6 +1912,11 @@ a.chip:hover {
   font-size: var(--text-xs);
   text-decoration: none;
   min-height: 2.75rem;
+}
+.footer__top-link svg {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
 }
 .footer__top-link:hover {
   color: var(--yellow);

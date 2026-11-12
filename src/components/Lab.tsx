@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, reducedMotion, revealLines } from "../motion";
 import { useLang } from "../i18n";
+import { scheduleFit } from "../fit";
 import { flavors, packSrcSet, type FlavorId } from "../data/flavors";
 import { Peanut } from "./Peanut";
 
@@ -24,7 +25,9 @@ export function Lab({ selected, onSelect }: { selected: FlavorId; onSelect: (id:
       revealLines(root.current!.querySelector(".lab__title")!);
       if (reducedMotion()) return;
       gsap.from(".lab__pack", { yPercent: 12, scale: 0.92, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: root.current, start: "top 65%", once: true } });
-      gsap.from(".lab__tab", { x: -24, opacity: 0, duration: 0.8, stagger: 0.08, ease: "expo.out", scrollTrigger: { trigger: root.current, start: "top 65%", once: true } });
+      // Arrivée explicite (fromTo) : la transition CSS sur transform faussait la valeur finale lue par gsap.from,
+      // les onglets restaient décalés de 24 px. clearProps rend ensuite la main au survol CSS.
+      gsap.fromTo(".lab__tab", { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: "expo.out", clearProps: "transform,opacity", scrollTrigger: { trigger: root.current, start: "top 65%", once: true } });
     },
     { scope: root },
   );
@@ -32,14 +35,19 @@ export function Lab({ selected, onSelect }: { selected: FlavorId; onSelect: (id:
   // Bascule de saveur
   useEffect(() => {
     if (selected === previous.current) return;
-    const from = flavors.findIndex((f) => f.id === previous.current);
+    const prevId = previous.current;
+    const from = flavors.findIndex((f) => f.id === prevId);
     const to = flavors.findIndex((f) => f.id === selected);
     const dir = to > from ? 1 : -1;
     previous.current = selected;
+    // Le nom affiché change de longueur : on réajuste le titre à sa colonne
+    scheduleFit();
     const section = root.current!;
     const target = flavors[to];
-    const outgoing = section.querySelector<HTMLElement>(`.lab__pack[data-id="${shown}"]`);
-    const incoming = section.querySelector<HTMLElement>(`.lab__pack[data-id="${selected}"]`);
+    // Le sachet sortant est celui de la saveur précédente (et non `shown`, en retard quand les clics s’enchaînent)
+    const packs = Array.from(section.querySelectorAll<HTMLElement>(".lab__pack"));
+    const outgoing = packs.find((p) => p.dataset.id === prevId);
+    const incoming = packs.find((p) => p.dataset.id === selected);
     const word = section.querySelector<HTMLElement>(".lab__word > span");
     const info = section.querySelectorAll<HTMLElement>(".lab__info > *");
 
@@ -50,6 +58,12 @@ export function Lab({ selected, onSelect }: { selected: FlavorId; onSelect: (id:
       return;
     }
     animating.current?.kill();
+    // Clics rapprochés : un sachet laissé en cours de route par la timeline interrompue ne doit pas rester en scène
+    packs.forEach((p) => {
+      if (p === outgoing || p === incoming) return;
+      p.hidden = true;
+      gsap.set(p, { clearProps: "all" });
+    });
     incoming.hidden = false;
     gsap.set(incoming, { xPercent: 40 * dir, rotate: 10 * dir, opacity: 0, scale: 0.9 });
     const tl = gsap.timeline({

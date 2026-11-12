@@ -48,7 +48,7 @@ export function Nav() {
       const onKey = (e: KeyboardEvent) => {
         if (e.key !== "Escape") return;
         setOpen(false);
-        requestAnimationFrame(() => toggleRef.current?.focus());
+        requestAnimationFrame(() => toggleRef.current?.focus({ preventScroll: true }));
       };
       window.addEventListener("keydown", onKey);
       return () => window.removeEventListener("keydown", onKey);
@@ -58,7 +58,7 @@ export function Nav() {
 
   const close = () => {
     setOpen(false);
-    requestAnimationFrame(() => toggleRef.current?.focus());
+    requestAnimationFrame(() => toggleRef.current?.focus({ preventScroll: true }));
   };
 
   const otherLang = lang === "en" ? "fr" : "en";
